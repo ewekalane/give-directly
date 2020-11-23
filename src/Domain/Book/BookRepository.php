@@ -43,6 +43,16 @@ class BookRepository
     }
 
     /**
+     * @param  string $name
+     * @return Book
+     * @throws BookNotFoundException
+     */
+    public function findBookOfName(string $name): Book
+    {
+        return new Book(1, $name);
+    }
+
+    /**
      * @param  int $id
      * @return Book
      * @throws BookNotFoundException

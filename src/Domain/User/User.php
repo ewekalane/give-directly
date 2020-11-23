@@ -35,7 +35,7 @@ class User implements Model
     public function __construct(?int $id, string $email, string $firstName, string $lastName)
     {
         $this->id = $id;
-        $this->username = strtolower($email);
+        $this->email = strtolower($email);
         $this->firstName = ucfirst($firstName);
         $this->lastName = ucfirst($lastName);
     }
@@ -79,7 +79,7 @@ class User implements Model
     {
         return [
             'id' => $this->id,
-            'username' => $this->email,
+            'email' => $this->email,
             'firstName' => $this->firstName,
             'lastName' => $this->lastName,
         ];
