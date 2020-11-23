@@ -2,10 +2,9 @@
 declare(strict_types=1);
 
 namespace App\Domain\User;
+use Illuminate\Database\Eloquent\Model as Model;
 
-use JsonSerializable;
-
-class User implements JsonSerializable
+class User implements Model
 {
     /**
      * @var int|null
@@ -15,7 +14,7 @@ class User implements JsonSerializable
     /**
      * @var string
      */
-    private $username;
+    private $email;
 
     /**
      * @var string
@@ -29,14 +28,14 @@ class User implements JsonSerializable
 
     /**
      * @param int|null  $id
-     * @param string    $username
+     * @param string    $email
      * @param string    $firstName
      * @param string    $lastName
      */
-    public function __construct(?int $id, string $username, string $firstName, string $lastName)
+    public function __construct(?int $id, string $email, string $firstName, string $lastName)
     {
         $this->id = $id;
-        $this->username = strtolower($username);
+        $this->email = strtolower($email);
         $this->firstName = ucfirst($firstName);
         $this->lastName = ucfirst($lastName);
     }
@@ -52,9 +51,9 @@ class User implements JsonSerializable
     /**
      * @return string
      */
-    public function getUsername(): string
+    public function getEmail(): string
     {
-        return $this->username;
+        return $this->email;
     }
 
     /**
@@ -80,7 +79,7 @@ class User implements JsonSerializable
     {
         return [
             'id' => $this->id,
-            'username' => $this->username,
+            'email' => $this->email,
             'firstName' => $this->firstName,
             'lastName' => $this->lastName,
         ];
